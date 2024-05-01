@@ -1,0 +1,39 @@
+
+import java.util.List;
+
+class Instructor extends People {
+    private List<String> courseList;
+    private List<Student> advisees;
+    private String program;
+
+    public Instructor(String name, String dob, String program, List<String> courseList, List<Student> advisees) {
+        super(name, dob);
+        this.program = program;
+        this.courseList = courseList;
+        this.advisees = advisees;
+    }
+
+    public List<String> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<String> courseList) {
+        this.courseList = courseList;
+    }
+
+    public List<Student> getAdvisees() {
+        return advisees;
+    }
+
+    public void setAdvisees(List<Student> advisees) {
+        this.advisees = advisees;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setAdvisees(String program) {
+        this.program = program;
+    }
+}
