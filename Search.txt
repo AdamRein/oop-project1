@@ -1,0 +1,352 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Search extends JFrame {
+    private JTextField searchField;
+    private JButton buttonStudent;
+    private JButton buttonInstructor;
+    private JButton buttonCourse;
+    private List<Student> studentList;
+    private List<Instructor> instructorList;
+    private List<Course> courseList;
+
+    public Search(List<Student> studentList, List<Instructor> instructorList, List<Course> courseList) {
+        this.studentList = studentList;
+        this.instructorList = instructorList;
+        this.courseList = courseList;
+
+        // Original Frame
+        setTitle("Search");
+        setSize(300, 100);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        JLabel searchLabel = new JLabel("Search:");
+        add(searchLabel);
+
+        searchField = new JTextField(20);
+        add(searchField);
+
+        // Buttons for Student, Instructor, and Course
+        buttonStudent = new JButton("Student");
+        buttonStudent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                searchStudent();
+            }
+        });
+        add(buttonStudent);
+
+        buttonInstructor = new JButton("Instructor");
+        buttonInstructor.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                searchInstructor();
+            }
+        });
+        add(buttonInstructor);
+
+        buttonCourse = new JButton("Course");
+        buttonCourse.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                searchCourse();
+            }
+        });
+        add(buttonCourse);
+        setVisible(true);
+    }
+
+    // Search Methods
+    private void searchStudent() {
+        String searchName = searchField.getText();
+        Student foundStudent = searchStudentByName(studentList, searchName);
+        if (foundStudent != null) {
+            new StudentDetailsFrame(foundStudent);
+        } else {
+            JOptionPane.showMessageDialog(this, "Student with name '" + searchName + "' not found.", "Student Not Found", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private void searchInstructor() {
+        String searchName = searchField.getText();
+        Instructor foundInstructor = searchInstructorByName(instructorList, searchName);
+        if (foundInstructor != null) {
+            new InstructorDetailsFrame(foundInstructor);
+        } else{
+            JOptionPane.showMessageDialog(this, "Instructor with name '" + searchName + "' not found.", "Instructor Not Found", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+    }
+
+    private void searchCourse() {
+        String searchName = searchField.getText();
+        Course foundCourse = searchCourseByName(courseList, searchName);
+        if (foundCourse != null) {
+            new CourseDetailsFrame(foundCourse);
+        } else{
+            JOptionPane.showMessageDialog(this, "Course with name '" + searchName + "' not found.", "Course Not Found", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+    }
+
+    // Search by exact name
+    private Student searchStudentByName(List<Student> students, String name) {
+        for (Student student : students) {
+            if (student.getName().equals(name)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    private Instructor searchInstructorByName(List<Instructor> instructors, String name) {
+        for (Instructor instructor : instructors) {
+            if (instructor.getName().equals(name)) {
+                return instructor;
+            }
+        }
+        return null;
+    }
+
+    private Course searchCourseByName(List<Course> courses, String name) {
+        for (Course course : courses) {
+            if (course.getName().equals(name)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        // Populate the lists
+        List<Student> students = new ArrayList<>();
+
+        Student student1 = new Student("John Doe", "1998-05-15", "Computer Science", 
+                                       List.of("Math", "Physics", "Programming"), "2022-09-01", "Dr. Smith");
+        students.add(student1);
+
+        Student student2 = new Student("Alice Smith", "1999-02-20", "Electrical Engineering", 
+                                       List.of("Calculus", "Circuit Analysis", "Digital Logic"), "2021-08-30", "Dr. Johnson");
+        students.add(student2);
+
+        Student student3 = new Student("Bob Johnson", "2000-09-10", "Biology", 
+                                       List.of("Chemistry", "Genetics", "Ecology"), "2023-01-15", "Dr. Brown");
+        students.add(student3);
+
+        Student student4 = new Student("Emily Brown", "1997-11-28", "Psychology", 
+                                       List.of("Psychological Disorders", "Cognitive Psychology", "Research Methods"), "2022-10-05", "Dr. Davis");
+        students.add(student4);
+
+        Student student5 = new Student("Michael Davis", "2001-04-03", "History", 
+                                       List.of("World History", "American History", "European History"), "2023-02-20", "Dr. Wilson");
+        students.add(student5);
+
+
+        List<Instructor> instructors = new ArrayList<>();
+
+        Instructor instructor1 = new Instructor("Dr. Smith", "1975-03-20", "Computer Science",
+                List.of("Math", "Programming"), List.of(student1, student2));
+        instructors.add(instructor1);
+
+        Instructor instructor2 = new Instructor("Dr. Johnson", "1980-07-10", "Electrical Engineering",
+                List.of("Circuit Analysis", "Digital Logic"), List.of(student3));
+        instructors.add(instructor2);
+
+        Instructor instructor3 = new Instructor("Dr. Brown", "1978-11-15", "Biology",
+                List.of("Chemistry", "Ecology"), List.of(student4));
+        instructors.add(instructor3);
+
+        Instructor instructor4 = new Instructor("Dr. Davis", "1982-05-05", "Psychology",
+                List.of("Cognitive Psychology", "Research Methods"), List.of(student5));
+        instructors.add(instructor4);
+
+        Instructor instructor5 = new Instructor("Dr. Wilson", "1976-09-28", "History",
+                List.of("World History", "European History"), List.of());
+        instructors.add(instructor5);
+
+
+        List<Course> courses = new ArrayList<>();
+
+        Course course1 = new Course("Object Orientation", "Software Engineering", List.of("CS1", "CS2"), List.of(instructor1), List.of(student1, student2, student3));
+        courses.add(course1);
+//    public Course(String name, String program, List<String> prerequisiteList, Instructor instructor, List<Student> studentList) {
+
+
+        SwingUtilities.invokeLater(() -> new Search(students, instructors, courses));
+
+    }
+
+    // Student's info
+    public class StudentDetailsFrame extends JFrame {
+        private JTextArea studentInfoArea;
+    
+        public StudentDetailsFrame(Student student) {
+            setTitle("Student Details");
+            setSize(400, 300);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setLayout(new BorderLayout());
+    
+            studentInfoArea = new JTextArea();
+            studentInfoArea.setEditable(false);
+            JScrollPane scrollPane = new JScrollPane(studentInfoArea);
+            add(scrollPane, BorderLayout.CENTER);
+            setVisible(true);
+    
+            displayStudentInfo(student);
+        }
+    
+        private void displayStudentInfo(Student student) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Name: ").append(student.getName()).append("\n");
+            sb.append("Date of Birth: ").append(student.getDOB()).append("\n");
+            sb.append("Program: ").append(student.getProgram()).append("\n");
+            sb.append("Course List: ").append(courseListToString(student.getCourseList())).append("\n");
+            sb.append("Start Date: ").append(student.getStartDate()).append("\n");
+            sb.append("Advisor: ").append(student.getAdvisor()).append("\n");
+    
+            studentInfoArea.setText(sb.toString());
+        }
+    
+        private String courseListToString(List<String> courseList) {
+            StringBuilder sb = new StringBuilder();
+            if (courseList != null && !courseList.isEmpty()) {
+                for (String course : courseList) {
+                    sb.append(course).append(", ");
+                }
+                sb.setLength(sb.length() - 2); // Remove the last comma and space
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+    }
+
+    // Instructor info
+    public class InstructorDetailsFrame extends JFrame {
+        private JTextArea instructorInfoArea;
+
+        public InstructorDetailsFrame(Instructor instructor) {
+            setTitle("Instructor Details");
+            setSize(400, 300);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setLayout(new BorderLayout());
+
+            instructorInfoArea = new JTextArea();
+            instructorInfoArea.setEditable(false);
+            JScrollPane scrollPane = new JScrollPane(instructorInfoArea);
+            add(scrollPane, BorderLayout.CENTER);
+            setVisible(true);
+
+            displayInstructorInfo(instructor);
+        }
+
+        private void displayInstructorInfo(Instructor instructor) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Name: ").append(instructor.getName()).append("\n");
+            sb.append("Date of Birth: ").append(instructor.getDOB()).append("\n");
+            sb.append("Program: ").append(instructor.getProgram()).append("\n");
+            sb.append("Course List: ").append(courseListToString(instructor.getCourseList())).append("\n");
+            sb.append("Advisees: ").append(adviseesListToString(instructor.getAdvisees())).append("\n");
+
+            instructorInfoArea.setText(sb.toString());
+        }
+
+        private String courseListToString(List<String> courseList) {
+            StringBuilder sb = new StringBuilder();
+            if (courseList != null && !courseList.isEmpty()) {
+                for (String course : courseList) {
+                    sb.append(course).append(", ");
+                }
+                sb.setLength(sb.length() - 2);
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+
+        private String adviseesListToString(List<Student> advisees) {
+            StringBuilder sb = new StringBuilder();
+            if (advisees != null && !advisees.isEmpty()) {
+                for (Student student : advisees) {
+                    sb.append(student.getName()).append(", ");
+                }
+                sb.setLength(sb.length() - 2);
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+    }
+
+    // Course info
+    public class CourseDetailsFrame extends JFrame {
+        private JTextArea courseInfoArea;
+
+        public CourseDetailsFrame(Course course) {
+            setTitle("Course Details");
+            setSize(400, 300);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setLayout(new BorderLayout());
+
+            courseInfoArea = new JTextArea();
+            courseInfoArea.setEditable(false);
+            JScrollPane scrollPane = new JScrollPane(courseInfoArea);
+            add(scrollPane, BorderLayout.CENTER);
+            setVisible(true);
+
+            displayCourseInfo(course);
+        }
+    //    public Course(String name, String program, List<String> prerequisiteList, Instructor instructor, List<Student> studentList) {
+
+        private void displayCourseInfo(Course course) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Name: ").append(course.getName()).append("\n");
+            sb.append("Program: ").append(course.getProgram()).append("\n");
+            sb.append("Prerequisites: ").append(prerequisiteListToString(course.getPrerequisiteList())).append("\n");
+            sb.append("Instructor: ").append(instructorListToString(course.getInstructorList())).append("\n");
+            sb.append("Students: ").append(studentsListToString(course.getStudentList())).append("\n");
+
+            courseInfoArea.setText(sb.toString());
+        }
+
+        private String prerequisiteListToString(List<String> prerequisiteList) {
+            StringBuilder sb = new StringBuilder();
+            if (prerequisiteList != null && !prerequisiteList.isEmpty()) {
+                for (String prerequisite : prerequisiteList) {
+                    sb.append(prerequisite).append(", ");
+                }
+                sb.setLength(sb.length() - 2);
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+
+        private String instructorListToString(List<Instructor> instructors) {
+            StringBuilder sb = new StringBuilder();
+            if (instructors != null && !instructors.isEmpty()) {
+                for (Instructor instructor : instructors) {
+                    sb.append(instructor.getName()).append(", ");
+                }
+                sb.setLength(sb.length() - 2);
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+        
+        private String studentsListToString(List<Student> students) {
+            StringBuilder sb = new StringBuilder();
+            if (students != null && !students.isEmpty()) {
+                for (Student student : students) {
+                    sb.append(student.getName()).append(", ");
+                }
+                sb.setLength(sb.length() - 2);
+            } else {
+                sb.append("None");
+            }
+            return sb.toString();
+        }
+    }
+}
