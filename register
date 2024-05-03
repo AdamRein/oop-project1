@@ -1,0 +1,215 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.register_button;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ *
+ * @author Jinx2
+ */
+public class Register extends javax.swing.JFrame{
+private List<Student> studentList = new ArrayList<>();
+    private List<Instructor> instructorList = new ArrayList<>();
+    private JComboBox<String> classList;
+    private JTextField nameField;
+    private JButton registerButton;
+    private ArrayList<String> registeredStudents;
+    private ArrayList<String> registeredTeachers;
+    private ArrayList<String> classListData;
+    private HashMap<String, ArrayList<String>> studentClasses;
+    /**
+     * Creates new form Register
+     */
+    public Register() {
+        initComponents();
+    }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: r.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jToggleButton1 = new javax.swing.JToggleButton();
+        register = new javax.swing.JToggleButton();
+        studentName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        teacherName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        classRegister = new javax.swing.JTextField();
+
+        jToggleButton1.setText("jToggleButton1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        register.setText("Register");
+        register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerMouseClicked(evt);
+            }
+        });
+
+        studentName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentNameActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Student Name:");
+
+        jLabel2.setText("Teacher Name:");
+
+        jLabel3.setText("Classes:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(classRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(teacherName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(register)
+                .addGap(210, 210, 210))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(teacherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(classRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(109, 109, 109)
+                .addComponent(register)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void studentNameActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        String StudentName = studentName.getText();
+        String course = classRegister.getText();
+        
+        addCouse(StudentName,course);
+    }                                           
+
+    private void registerMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        
+        
+    }                                     
+
+
+                
+    /**
+     * @param args the command line arguments
+     */
+    public void addCouse(String name,String course){   
+        for (Student student : studentList) {
+                    if (student.getName().equals(name)) {
+
+                        student.add_course(course);
+                    }
+        for (Instructor instructor : instructorList) {
+                    if (student.getName().equals(name)) {
+                    }
+        }}}
+    public static void main(String args[]) {
+         List<Student> studentList = new ArrayList<>();
+
+        Student student1 = new Student("John Doe", "1998-05-15", "Computer Science", 
+                                   "2022-09-01", "Dr. Smith");
+        studentList.add(student1);
+
+        Student student2 = new Student("Alice Smith", "1999-02-20", "Electrical Engineering", 
+                                        "2021-08-30", "Dr. Johnson");
+        studentList.add(student2);
+
+        Student student3 = new Student("Bob Johnson", "2000-09-10", "Biology", 
+                                       "2023-01-15", "Dr. Brown");
+        studentList.add(student3);
+
+        Student student4 = new Student("Emily Brown", "1997-11-28", "Psychology", 
+                                        "2022-10-05", "Dr. Davis");
+        studentList.add(student4);
+
+        Student student5 = new Student("Michael Davis", "2001-04-03", "History", 
+                                        "2023-02-20", "Dr. Wilson");
+        studentList.add(student5);
+        
+       
+        
+        List<Instructor> instructorList = new ArrayList<>();
+
+        Instructor instructor1 = new Instructor("Dr. Smith", "1975-03-20", "Computer Science",
+                List.of("Math", "Programming"), List.of(student1, student2));
+        instructorList.add(instructor1);
+
+        Instructor instructor2 = new Instructor("Dr. Johnson", "1980-07-10", "Electrical Engineering",
+                List.of("Circuit Analysis", "Digital Logic"), List.of(student3));
+        instructorList.add(instructor2);
+
+        Instructor instructor3 = new Instructor("Dr. Brown", "1978-11-15", "Biology",
+                List.of("Chemistry", "Ecology"), List.of(student4));
+        instructorList.add(instructor3);
+
+        Instructor instructor4 = new Instructor("Dr. Davis", "1982-05-05", "Psychology",
+                List.of("Cognitive Psychology", "Research Methods"), List.of(student5));
+        instructorList.add(instructor4);
+
+        Instructor instructor5 = new Instructor("Dr. Wilson", "1976-09-28", "History",
+                List.of("World History", "European History"), List.of());
+        instructorList.add(instructor5);
+
+
+        
+        
+        
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Register().setVisible(true);
+            }
+        });
+    }
+    
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JTextField classRegister;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton register;
+    private javax.swing.JTextField studentName;
+    private javax.swing.JTextField teacherName;
+    // End of variables declaration                   
+}
