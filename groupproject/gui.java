@@ -8,6 +8,8 @@ package com.mycompany.groupproject;
  *
  * @author stone
  */
+import java.util.ArrayList;
+import java.util.List;
 public class gui extends javax.swing.JFrame {
 
     /**
@@ -77,9 +79,9 @@ public class gui extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        studentRegister = new javax.swing.JTextField();
+        registerCourse = new javax.swing.JTextField();
+        registerStudent = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -91,7 +93,7 @@ public class gui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         assignAdvisor = new javax.swing.JTextField();
-        AssignStudent = new javax.swing.JTextField();
+        assignStudent = new javax.swing.JTextField();
         saveAssign = new javax.swing.JButton();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -123,7 +125,7 @@ public class gui extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
+        studentSearch = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -132,8 +134,8 @@ public class gui extends javax.swing.JFrame {
         jTextField24 = new javax.swing.JTextField();
         jTextField25 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        studentSearch = new javax.swing.JButton();
+        studentCoures = new javax.swing.JTextPane();
+        searchStudent = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -251,7 +253,7 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(81, 81, 81)
                         .addComponent(jButton2)))
                 .addContainerGap(307, Short.MAX_VALUE))
         );
@@ -274,9 +276,9 @@ public class gui extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(51, 51, 51)
                 .addComponent(jButton2)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Student", jPanel2);
@@ -391,7 +393,12 @@ public class gui extends javax.swing.JFrame {
 
         jLabel12.setText("Course");
 
-        jButton8.setText("Register");
+        registerStudent.setText("Register");
+        registerStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerStudentMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -405,14 +412,14 @@ public class gui extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registerCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(studentRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addComponent(jButton8)))
+                        .addComponent(registerStudent)))
                 .addContainerGap(261, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -421,13 +428,13 @@ public class gui extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registerCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addComponent(registerStudent)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
 
@@ -504,7 +511,7 @@ public class gui extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(assignAdvisor, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(AssignStudent)))
+                            .addComponent(assignStudent)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(saveAssign)))
@@ -520,7 +527,7 @@ public class gui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AssignStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(assignStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(saveAssign)
                 .addContainerGap(165, Short.MAX_VALUE))
@@ -534,14 +541,20 @@ public class gui extends javax.swing.JFrame {
 
         jLabel29.setText("Date Of Birth");
 
+        jTextField27.setEditable(false);
+
         jLabel30.setText("Program");
 
         jLabel31.setText("Courses");
 
         jLabel32.setText("Advisees");
 
+        jTextField28.setEditable(false);
+
+        jTextPane2.setEditable(false);
         jScrollPane2.setViewportView(jTextPane2);
 
+        jTextPane3.setEditable(false);
         jScrollPane3.setViewportView(jTextPane3);
 
         jButton5.setText("Search");
@@ -618,6 +631,13 @@ public class gui extends javax.swing.JFrame {
 
         jLabel37.setText("Students");
 
+        jTextField29.setEditable(false);
+
+        jTextField30.setEditable(false);
+
+        jTextField31.setEditable(false);
+
+        jTextPane4.setEditable(false);
         jScrollPane4.setViewportView(jTextPane4);
 
         jButton6.setText("Search");
@@ -688,12 +708,20 @@ public class gui extends javax.swing.JFrame {
 
         jLabel27.setText("Advisor");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jTextField22.setEditable(false);
 
-        studentSearch.setText("Search");
-        studentSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTextField24.setEditable(false);
+
+        jTextField25.setEditable(false);
+
+        studentCoures.setEditable(false);
+        studentCoures.setText(" ");
+        jScrollPane1.setViewportView(studentCoures);
+
+        searchStudent.setText("Search");
+        searchStudent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                studentSearchMouseClicked(evt);
+                searchStudentMouseClicked(evt);
             }
         });
 
@@ -721,9 +749,9 @@ public class gui extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(studentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentSearch)))
+                        .addComponent(searchStudent)))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -732,8 +760,8 @@ public class gui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(studentSearch))
+                    .addComponent(studentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchStudent))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -776,24 +804,39 @@ public class gui extends javax.swing.JFrame {
 
     private void saveAssignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveAssignMouseClicked
         // TODO add your handling code here:
-            String advisor = assignAdvisor.getText();
-            String student = AssignStudent.getText();
+           String advisor = assignAdvisor.getText();
+           String student = assignStudent.getText();
                
-            Calling calling = new Calling();
-            calling.saveAssignAdvisor(advisor, student);
+           Calling calling = new Calling();
+           calling.saveAssignAdvisor(advisor, student);
     }//GEN-LAST:event_saveAssignMouseClicked
 
-    private void studentSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentSearchMouseClicked
+    private void searchStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchStudentMouseClicked
         // TODO add your handling code here:
-        String student = studentSearch.getText();
+       String student = studentSearch.getText();
+    
+       Calling calling = new Calling();
+       String studentInfo = calling.studentCoures(student, studentList);
+       studentCoures.setText (studentInfo);
+    }//GEN-LAST:event_searchStudentMouseClicked
+
+    private void registerStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerStudentMouseClicked
+        // TODO add your handling code here:
+        String StudentName = studentRegister.getText();
+        String courseName = registerCourse.getText();
         
         Calling calling = new Calling();
-        calling.searchStudent(student);
-    }//GEN-LAST:event_studentSearchMouseClicked
+        calling.registerStudent(StudentName, courseName);
+    }//GEN-LAST:event_registerStudentMouseClicked
 
     /**
      * @param args the command line arguments
      */
+    public static List<Instructor> instructorList = new ArrayList<>();
+    public static List<Student> studentList = new ArrayList<>();
+    public static List<Program> programList = new ArrayList<>();
+    public static List<Course> courseOfList = new ArrayList<>();
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -817,7 +860,62 @@ public class gui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        Program program1 = new Program("Software Engineering", "Indiana Tech", "Traditional", 70);
 
+        Program program2 = new Program("Business", "Purdue", "Trad", 50);
+
+        Student student1 = new Student("John Doe", "1998-05-15", program1, 
+                                       List.of("Math", "Physics", "Programming"), "2022-09-01", "Dr. Smith");
+        studentList.add(student1);
+
+        Student student2 = new Student("Alice Smith", "1999-02-20", program2, 
+                                       List.of("Calculus", "Circuit Analysis", "Digital Logic"), "2021-08-30", "Dr. Johnson");
+        studentList.add(student2);
+
+        Student student3 = new Student("Bob Johnson", "2000-09-10", program2, 
+                                       List.of("Chemistry", "Genetics", "Ecology"), "2023-01-15", "Dr. Brown");
+        studentList.add(student3);
+
+        Student student4 = new Student("Emily Brown", "1997-11-28", program2, 
+                                       List.of("Psychological Disorders", "Cognitive Psychology", "Research Methods"), "2022-10-05", "Dr. Davis");
+        studentList.add(student4);
+
+        Student student5 = new Student("Michael Davis", "2001-04-03", program1, 
+                                       List.of("World History", "American History", "European History"), "2023-02-20", "Dr. Wilson");
+        studentList.add(student5);
+
+        Instructor instructor1 = new Instructor("Dr. Smith", "1975-03-20", program1,
+                List.of("Math", "Programming"), List.of(student1, student2));
+        instructorList.add(instructor1);
+
+        Instructor instructor2 = new Instructor("Dr. Johnson", "1980-07-10", program2,
+                List.of("Circuit Analysis", "Digital Logic"), List.of(student3));
+        instructorList.add(instructor2);
+
+        Instructor instructor3 = new Instructor("Dr. Brown", "1978-11-15", program1,
+                List.of("Chemistry", "Ecology"), List.of(student4));
+        instructorList.add(instructor3);
+
+        Instructor instructor4 = new Instructor("Dr. Davis", "1982-05-05", program2,
+                List.of("Cognitive Psychology", "Research Methods"), List.of(student5));
+        instructorList.add(instructor4);
+
+        Instructor instructor5 = new Instructor("Dr. Wilson", "1976-09-28", program1,
+                List.of("World History", "European History"), List.of());
+        instructorList.add(instructor5);
+
+        Course course1 = new Course("Object Orientation", program2, List.of("CS1", "CS2"), instructor1, List.of(student1, student2, student3));
+        courseOfList.add(course1);
+
+        Course course2 = new Course("Calculus", program1, List.of("Precalculus"), instructor2,List.of(student3, student4));
+        courseOfList.add(course2);
+
+        Course course3 = new Course("Psychology", program2, List.of("Intro to Psych"), instructor5, List.of(student1, student4));
+        courseOfList.add(course3);
+        
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -829,15 +927,14 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AssignStudent;
     private javax.swing.JTextField assignAdvisor;
+    private javax.swing.JTextField assignStudent;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
@@ -903,7 +1000,6 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
@@ -913,7 +1009,6 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
@@ -929,13 +1024,16 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextField registerCourse;
+    private javax.swing.JButton registerStudent;
     private javax.swing.JButton saveAssign;
-    private javax.swing.JButton studentSearch;
+    private javax.swing.JButton searchStudent;
+    private javax.swing.JTextPane studentCoures;
+    private javax.swing.JTextField studentRegister;
+    private javax.swing.JTextField studentSearch;
     // End of variables declaration//GEN-END:variables
 }

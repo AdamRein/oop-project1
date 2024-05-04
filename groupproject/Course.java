@@ -19,7 +19,7 @@ public class Course {
     
    public String name;
    public Program program;
-   private List<Course> prerequisiteList;
+   private List<String> prerequisiteList;
    public Instructor instructor;
    private List<Student> studentList;
    
@@ -32,25 +32,32 @@ public class Course {
         this.studentList = new ArrayList<>();
         
     }
+    public Course(String name, Program program, List<String> prerequisiteList, Instructor instructor, List<Student> studentList) {
+        this.name = name;
+        this.program = program;
+        this.prerequisiteList = prerequisiteList;
+        this.instructor = instructor;
+        this.studentList = studentList;
+    }
     
     //getters for prereq list
     
-    public List<Course> getPrerequisiteList(){
+    public List<String> getPrerequisiteList(){
         return prerequisiteList;
     }
     
     //setter
     
-    public void setPrequisiteList(List<Course> prequisiteList){
+    public void setPrequisiteList(List<String> prequisiteList){
         this.prerequisiteList = prequisiteList; 
     }
     
      // adding prereq
-    public void addPrerequisite(Course course){
+    public void addPrerequisite(String course){
         prerequisiteList.add(course);
     }
      // removing prereq
-    public void removePrerequisite(Course course){
+    public void removePrerequisite(String course){
        prerequisiteList.remove(course);
     }
    

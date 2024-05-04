@@ -11,15 +11,15 @@ package com.mycompany.groupproject;
 import java.util.Date;
 public class People {
     private String Name;
-    private Date DOB;
+    private String DOB;
     
     
     // Constructor
     public People(){
         this.Name = "";
-        this.DOB = new Date(0);
+        this.DOB = "";
     }
-    public People(String Name, Date DOB){
+    public People(String Name, String DOB){
         this.Name = Name;
         this.DOB = DOB;
     }
@@ -32,10 +32,10 @@ public class People {
         return Name;
     }
     
-     public void setDOB(Date setDOB) {
+     public void setDOB(String setDOB) {
         this.DOB = setDOB;
     }
-     public Date getDOB() {
+     public String getDOB() {
         return DOB;
     }
     

@@ -10,14 +10,13 @@ package com.mycompany.groupproject;
  */
 
 import java.util.List;
-import java.util.Date;
 
-class Instructor extends People {
+public class Instructor extends People {
     private List<String> courseList;
     private List<Student> advisees;
-    private String program;
+    private Program program;
 
-    public Instructor(String name, Date dob, String program, List<String> courseList, List<Student> advisees) {
+    public Instructor(String name, String dob, Program program, List<String> courseList, List<Student> advisees) {
         super(name, dob);
         this.program = program;
         this.courseList = courseList;
@@ -40,15 +39,15 @@ class Instructor extends People {
         this.advisees = advisees;
     }
 
-    public String getProgram() {
+    public Program getProgram() {
         return program;
     }
 
-    public void setProgram(String program) {
+    public void setProgram(Program program) {
         this.program = program;
     }
     
-    public void addAdvisee(String student) {
-        addAdvisee(student);
+    public void addAdvisee(Student student) {
+        advisees.add(student);
     }
 }
