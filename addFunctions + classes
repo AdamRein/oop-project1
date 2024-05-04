@@ -1,0 +1,1353 @@
+-------PEOPLE CLASS------
+
+package com.mycompany.oopproject;
+import java.util.Date;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Ahshan
+ */
+public class People {
+    private String Name;
+    private String DOB;
+    
+    
+    // Constructor
+    public People(){
+        this.Name = "";
+        this.DOB = "00/00/0000";
+    }
+    public People(String Name, String DOB){
+        this.Name = Name;
+        this.DOB = DOB;
+    }
+    
+    //seting and geting varables
+    public void setName(String setName) {
+        this.Name = setName;
+    }
+     public String getName() {
+        return Name;
+    }
+    
+     public void setDOB(String setDOB) {
+        this.DOB = setDOB;
+    }
+     public String getDOB() {
+        return DOB;
+    }
+    
+}
+-------
+----- STUDENT CLASS -------------------------------------------
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.oopproject;
+
+/**
+ *
+ * @author Ahshan
+ */
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Student extends People {
+    
+    private Program program;
+    private String start_date;
+    private String advisor;
+    private ArrayList<String> course_list;
+    
+ 
+
+    public Student(String name, String DOB, Program program, String start_date, String advisor) {
+        super(name, DOB); 
+        
+        this.program = program;
+        this.start_date = start_date;
+        this.advisor = advisor;
+        this.course_list = new ArrayList<>();
+    }
+
+    public Program getProgram () {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+
+    public String getStartDate() {
+        return start_date;
+    }
+
+    public void setStartDate(String start_date) {
+        this.start_date = start_date;
+    }
+
+    public String getAdvisor() {
+        return advisor;
+    }
+
+    public void setAdvisor(String advisor) {
+        this.advisor = advisor;
+    }
+
+    public void addCourse(String course) {
+        course_list.add(course);
+    }
+
+    public void removeCourse(String course) {
+        course_list.remove(course);
+    }
+
+    public ArrayList<String> get_course_list() {
+        return course_list;
+    }
+}
+
+------------------------
+------------INSTRUCTOR CLASS -------------------
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.oopproject;
+
+/**
+ *
+ * @author Ahshan
+ */
+
+import java.util.List;
+
+class Instructor extends People {
+    private List<String> courseList;
+    private List<Student> advisees;
+    private Program program;
+
+    public Instructor(String name, String DOB, Program program, List<String> courseList, List<Student> advisees) {
+        super(name, DOB);
+        this.program = program;
+        this.courseList = courseList;
+        this.advisees = advisees;
+    }
+
+    public List<String> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<String> courseList) {
+        this.courseList = courseList;
+    }
+
+    public List<Student> getAdvisees() {
+        return advisees;
+    }
+
+    public void setAdvisees(List<Student> advisees) {
+        this.advisees = advisees;
+    }
+
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+}
+
+-----------------------------------------
+---------COURSE CLASS -------------------
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.oopproject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ *
+ * @author Ahshan
+ */
+public class Course {
+    
+      
+   private String name;
+   private Program program;
+   private List<String> prerequisiteList;
+   public Instructor instructor;
+   private List<Student> courseStudents;
+   
+       // Constructor
+    public Course (String name,Program program,Instructor instructor,List<String> preqrequisiteList, List<Student> courseStudents){
+        this.name = name;
+        this.program = program;
+        this.prerequisiteList = preqrequisiteList;
+        this.instructor = instructor;
+        this.courseStudents = courseStudents;
+        
+    }
+   
+   //getters for prereq list
+    
+    public List<String> getPrerequisiteList(){
+        return prerequisiteList;
+    }
+    
+    //setter
+    
+    public void setPrequisiteList(List<String> prequisiteList){
+        this.prerequisiteList = prequisiteList;
+        
+    }
+    
+     // adding prereq
+    public void addPrerequisite(String course){
+        prerequisiteList.add(course);
+    }
+     // removing prereq
+    public void removePrerequisite(Course course){
+       prerequisiteList.remove(course);
+    }
+   
+    //getters for courseStudents
+    public List<Student> getStudentList(){
+        return courseStudents;
+    }
+    
+    //setters 
+    public void setStudentList(List<Student> studentList){
+        this.courseStudents = studentList;
+    }
+    
+    //adding students 
+    
+    public void addStudent(Student student){
+        courseStudents.add(student);
+    }
+    
+    //remove students
+    
+    public void removeStudent(Student student){
+        courseStudents.remove(student);
+    }
+    
+    
+    //get name 
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name) {
+      this.name = name;
+    }
+    
+    //need to get program function
+    
+    public Program getProgram(){
+        return program;
+    }
+    
+    public void SetProgram(Program program){
+        this.program = program;
+    }
+    
+    public Instructor getInstructor() {
+        return instructor;
+    }
+    
+    public void setInstructor (Instructor instructor) {
+        this.instructor = instructor;
+    }
+    
+}
+
+-----------------
+
+---------PROGRAM CLASS------
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.oopproject;
+
+/**
+ *
+ * @author Ahshan
+ */
+public class Program {
+    
+    private String name;
+    private String college;
+    private String type;
+    private int totalCredits;
+
+    // Constructor
+    public Program(){
+        this.name = "";
+        this.college = "";
+        this.type = "";
+        this.totalCredits = 0;
+    }
+            
+    public Program(String name, String college, String type, int totalCredits) {
+        this.name = name;
+        this.college = college;
+        this.type = type;
+        this.totalCredits = totalCredits;
+    }
+    
+     //seting and geting varables
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getTotalCredits() {
+        return totalCredits;
+    }
+
+    public void setTotalCredits(int totalCredits) {
+        this.totalCredits = totalCredits;
+    }
+    
+}
+
+--------------------------------------------------------
+------------------REGISTER.FRAME --- THIS IS WHERE THE ADD FUNCTIONS ARE--------------
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.oopproject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Ahshan
+ */
+public class RegisterFrame extends javax.swing.JFrame {
+    
+    
+
+    /**
+     * Creates new form RegisterFrame
+     */
+    public RegisterFrame() {
+        initComponents();
+        //initilizing ProgramList
+        programList = new ArrayList<Program>();
+        studentList = new ArrayList<Student>();
+        instructorList = new ArrayList<Instructor>();
+        //Example programs
+            Program exProgram1 = new Program("SE","IT","TRADITIONAL",70);
+            programList.add(exProgram1);
+
+            Program exProgram2 = new Program("EE","IT","Online",70);
+            programList.add(exProgram2);
+            
+            Student student1 = new Student("John Doe", "1998-05-15",exProgram1,"1-7-23","Brian");
+            studentList.add(student1);
+            Student student2 = new Student("Jane Doe", "1998-05-15",exProgram2,"1-7-23","Brian");
+            studentList.add(student2);
+            
+            
+           //adding a instructor
+            Instructor instructor1 = new Instructor("Dr. Smith", "1975-03-20", exProgram1,List.of("Math", "CS3"), List.of(student1, student2));
+            instructorList.add(instructor1);
+
+        courseOfList = new ArrayList();
+            //example Courses
+            Course exCourse1 = new Course("Object",exProgram1,instructor1,List.of("CS1","CS2"),List.of(student1,student2));//HERE AM ADDING A COURSE OBJECT
+            courseOfList.add(exCourse1);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        addBtn = new javax.swing.JToggleButton();
+        innerAddFrame = new javax.swing.JInternalFrame();
+        programLbl = new javax.swing.JLabel();
+        programNameTxt = new javax.swing.JTextField();
+        programCollegeTxt = new javax.swing.JTextField();
+        programTypeTxt = new javax.swing.JTextField();
+        programTotalCreditsTxt = new javax.swing.JTextField();
+        addProgramBtn = new javax.swing.JButton();
+        showProgramsListBtn = new javax.swing.JButton();
+        studentLbl = new javax.swing.JLabel();
+        studentDOBTxt = new javax.swing.JTextField();
+        studentProgramTxt = new javax.swing.JTextField();
+        studentStartDateTxt = new javax.swing.JTextField();
+        studentAdvisorTxt = new javax.swing.JTextField();
+        instructorLbl = new javax.swing.JLabel();
+        courseLbl = new javax.swing.JLabel();
+        studentNameTxt = new javax.swing.JTextField();
+        addStudentBtn = new javax.swing.JButton();
+        showStudentBtn = new javax.swing.JButton();
+        instructorNameTxt = new javax.swing.JTextField();
+        instructorDOBTxt = new javax.swing.JTextField();
+        instructorProgramTxt = new javax.swing.JTextField();
+        instructorCourseListTxt = new javax.swing.JTextField();
+        instructorAdviseesListTxt = new javax.swing.JTextField();
+        addInstructorBtn = new javax.swing.JButton();
+        showInstructorsBtn = new javax.swing.JButton();
+        courseNameTxt = new javax.swing.JTextField();
+        courseProgramTxt = new javax.swing.JTextField();
+        coursePrerequisiteListTxt = new javax.swing.JTextField();
+        courseInstructorTxt = new javax.swing.JTextField();
+        courseStudentListTxt = new javax.swing.JTextField();
+        addCourseBtn = new javax.swing.JButton();
+        addCourseShowBtn = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        addBtn.setText("Add");
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBtnMouseClicked(evt);
+            }
+        });
+
+        innerAddFrame.setVisible(true);
+
+        programLbl.setText("Program:");
+
+        programNameTxt.setText("Name");
+
+        programCollegeTxt.setText("College");
+
+        programTypeTxt.setText("Type");
+
+        programTotalCreditsTxt.setText("Credits");
+
+        addProgramBtn.setText("ADD");
+        addProgramBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addProgramBtnMouseClicked(evt);
+            }
+        });
+
+        showProgramsListBtn.setText("SHOW");
+        showProgramsListBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showProgramsListBtnMouseClicked(evt);
+            }
+        });
+
+        studentLbl.setText("Student: ");
+
+        studentDOBTxt.setText("DOB");
+        studentDOBTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentDOBTxtActionPerformed(evt);
+            }
+        });
+
+        studentProgramTxt.setText("Program");
+
+        studentStartDateTxt.setText("Start_Date");
+
+        studentAdvisorTxt.setText("Advisor");
+        studentAdvisorTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentAdvisorTxtActionPerformed(evt);
+            }
+        });
+
+        instructorLbl.setText("Instructor: ");
+
+        courseLbl.setText("Course:");
+
+        studentNameTxt.setText("Name");
+
+        addStudentBtn.setText("ADD");
+        addStudentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addStudentBtnMouseClicked(evt);
+            }
+        });
+
+        showStudentBtn.setText("SHOW");
+        showStudentBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showStudentBtnMouseClicked(evt);
+            }
+        });
+
+        instructorNameTxt.setText("Name");
+
+        instructorDOBTxt.setText("DOB");
+
+        instructorProgramTxt.setText("Program");
+
+        instructorCourseListTxt.setText("Course List");
+
+        instructorAdviseesListTxt.setText("Advisees");
+
+        addInstructorBtn.setText("ADD");
+        addInstructorBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addInstructorBtnMouseClicked(evt);
+            }
+        });
+
+        showInstructorsBtn.setText("SHOW");
+        showInstructorsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showInstructorsBtnMouseClicked(evt);
+            }
+        });
+
+        courseNameTxt.setText("Name");
+        courseNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseNameTxtActionPerformed(evt);
+            }
+        });
+
+        courseProgramTxt.setText("Program");
+        courseProgramTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseProgramTxtActionPerformed(evt);
+            }
+        });
+
+        coursePrerequisiteListTxt.setText("Prerequisite List");
+
+        courseInstructorTxt.setText("Instructor");
+
+        courseStudentListTxt.setText("Student List");
+        courseStudentListTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseStudentListTxtActionPerformed(evt);
+            }
+        });
+
+        addCourseBtn.setText("ADD");
+        addCourseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCourseBtnMouseClicked(evt);
+            }
+        });
+
+        addCourseShowBtn.setText("SHOW");
+        addCourseShowBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCourseShowBtnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout innerAddFrameLayout = new javax.swing.GroupLayout(innerAddFrame.getContentPane());
+        innerAddFrame.getContentPane().setLayout(innerAddFrameLayout);
+        innerAddFrameLayout.setHorizontalGroup(
+            innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(innerAddFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(innerAddFrameLayout.createSequentialGroup()
+                        .addComponent(programLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(programNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(programCollegeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(programTypeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(programTotalCreditsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addProgramBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showProgramsListBtn))
+                    .addGroup(innerAddFrameLayout.createSequentialGroup()
+                        .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(instructorLbl)
+                            .addComponent(studentLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(innerAddFrameLayout.createSequentialGroup()
+                                .addComponent(studentNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(studentDOBTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(studentProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(studentStartDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(studentAdvisorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addStudentBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(showStudentBtn))
+                            .addGroup(innerAddFrameLayout.createSequentialGroup()
+                                .addComponent(instructorNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(instructorDOBTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(instructorProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(instructorCourseListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(instructorAdviseesListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addInstructorBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(showInstructorsBtn))))
+                    .addGroup(innerAddFrameLayout.createSequentialGroup()
+                        .addComponent(courseLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(coursePrerequisiteListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseInstructorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseStudentListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addCourseBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addCourseShowBtn)))
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+        innerAddFrameLayout.setVerticalGroup(
+            innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(innerAddFrameLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(programLbl)
+                    .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(programNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(programCollegeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(programTypeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(programTotalCreditsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addProgramBtn)
+                        .addComponent(showProgramsListBtn)))
+                .addGap(34, 34, 34)
+                .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studentLbl)
+                    .addComponent(studentDOBTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentStartDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentAdvisorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addStudentBtn)
+                    .addComponent(showStudentBtn))
+                .addGap(63, 63, 63)
+                .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(instructorLbl)
+                    .addComponent(instructorNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instructorDOBTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instructorProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instructorCourseListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instructorAdviseesListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addInstructorBtn)
+                    .addComponent(showInstructorsBtn))
+                .addGap(63, 63, 63)
+                .addGroup(innerAddFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courseLbl)
+                    .addComponent(courseNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseProgramTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coursePrerequisiteListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseInstructorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseStudentListTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addCourseBtn)
+                    .addComponent(addCourseShowBtn))
+                .addContainerGap(309, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addBtn)
+                .addGap(46, 46, 46)
+                .addComponent(innerAddFrame)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(innerAddFrame)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addBtn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // toggling the innerframe where you do inputs and saving
+        
+        if (!innerAddFrame.isVisible()){
+            innerAddFrame.setVisible(true);
+        } else {
+            innerAddFrame.setVisible(false);
+        }
+    }                                   
+
+    private void studentAdvisorTxtActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void studentDOBTxtActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void showProgramsListBtnMouseClicked(java.awt.event.MouseEvent evt) {                                                 
+
+        showPrograms();
+       
+
+        
+
+    }                                                
+
+    private void addProgramBtnMouseClicked(java.awt.event.MouseEvent evt) {                                           
+
+    
+        //addProgram method is called.
+        addProgram();
+
+        
+            
+
+    }                                          
+
+    private void addStudentBtnMouseClicked(java.awt.event.MouseEvent evt) {                                           
+        //calling addStudent method
+        
+        addStudent();
+        
+    }                                          
+
+    private void showStudentBtnMouseClicked(java.awt.event.MouseEvent evt) {                                            
+        showStudents();
+    }                                           
+
+    private void addInstructorBtnMouseClicked(java.awt.event.MouseEvent evt) {                                              
+        addInstructor();
+    }                                             
+
+    private void showInstructorsBtnMouseClicked(java.awt.event.MouseEvent evt) {                                                
+        showInstructors();
+    }                                               
+
+    private void courseNameTxtActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void courseProgramTxtActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
+    private void courseStudentListTxtActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        // TODO add your handling code here:
+    }                                                    
+
+    private void addCourseBtnMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        addCourse();
+    }                                         
+
+    private void addCourseShowBtnMouseClicked(java.awt.event.MouseEvent evt) {                                              
+       showCourses();
+    }                                             
+
+    public void addProgram(){//METHOD to add a program to the ProgramList
+        //can change this to Major instead of program to not have confusion
+        Program program = new Program();
+       
+     
+        program.setName(programNameTxt.getText()); // setting program name 
+       
+        program.setCollege(programCollegeTxt.getText());//settiung program college
+       
+        program.setType(programTypeTxt.getText());// setting program type
+        
+        program.setTotalCredits(Integer.parseInt(programTotalCreditsTxt.getText()));//setting program total credits
+        
+        programList.add(program);
+        
+        
+    }
+    
+    public void addStudent(){
+        
+        String studentName = studentNameTxt.getText(); //getting the studentName to put into contrstuctor
+        String studentDOB = studentDOBTxt.getText(); // getting the studentDOB to put into constructor
+        String studentStartDate = studentStartDateTxt.getText();//getting the student start_date to put into constructor
+        String studentAdvisor = studentAdvisorTxt.getText(); // getting the student advisor to put into constructor
+        //
+        String programVar = studentProgramTxt.getText(); // String thats retrieved from studentProgram text field and is compared to programs inside programList
+        Program studentProgram = null;
+        
+         //checking first to see if the program is inside the programList, if it is then set as studentProgram.
+         Boolean programFound = true;// using this to ouput a warning that the program is not in our programList
+         
+         
+         //checking logic
+            for(Program programObject: programList) {
+                if(programObject.getName().equals(programVar)){
+                    studentProgram = programObject;
+                    //checked for program being inside the programList and then set it to the students program.
+                    programFound = true;
+                    break;
+                }
+                else{
+                    programFound=false;
+                   
+                }
+                
+               
+                
+            }
+            
+            //outputting a message to tell user that the program is not inside the programList
+            if(programFound == false){
+                JOptionPane.showMessageDialog(null,"Program is not correctly entered or does not exist.");
+            }
+            else{
+                    
+            }
+            
+            
+        //Program studentProgram = student.setProgram();// getting the student program to put into constructor
+        //
+        Student student = new Student(studentName,studentDOB,studentProgram,studentStartDate,studentAdvisor); // making the student object
+        
+        //setting student attributes
+        student.setName(studentName); // setting student name
+        student.setDOB(studentDOB);//setting student DOB
+        student.setStartDate(studentStartDate);
+        student.setAdvisor(studentAdvisor);
+        student.setProgram(studentProgram);
+        
+        
+        //checking to see if a field is empty and if program is null/not in program then it will not add student to the studentList
+      
+        if(studentName.isEmpty() ||  studentDOB.isEmpty() || studentProgram == null || studentStartDate.isEmpty() || studentAdvisor.isEmpty()){
+            JOptionPane.showMessageDialog(null,"One or more Fields are empty and/or NULL");
+        }
+        else{
+             studentList.add(student); //adding the student object to the studentList
+            
+        }
+            
+    }
+    
+    public void addInstructor(){ // Method for adding instructor
+        //getting information for variables
+        String instructorName = instructorNameTxt.getText();
+        String instructorDOB = instructorDOBTxt.getText();
+        String programVar = instructorProgramTxt.getText();
+        Program instructorProgram = null;
+        
+        //getting courseObject list from textField
+        String[] instructorCourseList = instructorCourseListTxt.getText().split(",");
+        
+        //arraylist so i can use .contains() down below
+        List<String> checkCourseList = new ArrayList<String>();
+            //using this for the loop to add to the checkCourse arrayList, this arraylist is just used to make sure that the entries are inline with the courseOfList (List of all courses).
+        
+        List<String> finalInstructorCourseList = new ArrayList<String>(); // this is the actual list that holds the courses 
+
+        //loop to populate the checkCourseList
+        for(String course: instructorCourseList){ 
+            checkCourseList.add(course);
+        }
+        
+        //getting advisee/student names 
+        String[] adviseeName = instructorAdviseesListTxt.getText().split(",");
+        //
+        List<String> checkAdviseesList = new ArrayList<String>();
+        List<Student> instructorAdviseesList = new ArrayList<Student>(); // the actual list with the advisees of the instructor
+        
+        //adding the adviseeName contents to checkAdviseesList
+        
+        for (String advisees: adviseeName ) {
+            
+            
+            checkAdviseesList.add(advisees);
+        }
+        
+        // checking the name of the students with the studentList then adding it to the instructorAdviseeList
+        
+        for (Student studentObject: studentList) {
+            for(String advisee: checkAdviseesList) {
+                if (advisee.equals(studentObject.getName())) {
+                    instructorAdviseesList.add(studentObject);
+                }
+            }
+           
+            
+        }
+        
+       
+        
+        
+        
+        //Making the Instructor object.
+      
+        Instructor instructor = new Instructor(instructorName, instructorDOB, instructorProgram,finalInstructorCourseList,instructorAdviseesList);
+        
+      
+        
+        // This for loop is checking the entries from the textField and courseOfList (list of all courses) and making sure theres a match before adding.
+        for(Course course: courseOfList ){
+            
+            for(String courseObject: checkCourseList){
+                if (checkCourseList.contains(course.getName())) {
+                    finalInstructorCourseList.add(courseObject);
+                
+                }
+            }
+        }
+        
+        
+      //checking first to see if the program is inside the programList, if it is then set as studentProgram.
+         Boolean programFound = true;// using this to ouput a warning that the program is not in our programList
+         
+         
+         //checking logic
+            for(Program programObject: programList) {
+                if(programObject.getName().equals(programVar)){
+                    instructorProgram = programObject;
+                    //checked for program being inside the programList and then set it to the students program.
+                    programFound = true;
+                    break;
+                }
+                else{
+                    programFound=false;
+                   
+                }
+        
+        
+        
+            }
+            
+            //outputting a message to tell user that the program is not inside the programList
+            if(programFound == false){
+                JOptionPane.showMessageDialog(null,"Program is not correctly entered or does not exist.");
+            }
+            else{}
+            
+        //setting the values     
+            
+        instructor.setName(instructorName);
+        instructor.setDOB(instructorDOB);
+        instructor.setProgram(instructorProgram);
+        instructor.setCourseList(finalInstructorCourseList);
+        instructor.setAdvisees(instructorAdviseesList);
+        
+        
+        
+        if (instructorName.isEmpty() || instructorDOB.isEmpty() || instructorProgram == null || instructorCourseList == null || instructorAdviseesList == null ) {
+            JOptionPane.showMessageDialog(null, "One or More fields are empty and/or null.");
+        }
+        else {
+             instructorList.add(instructor);
+
+        }
+                
+                
+                    
+            
+    }
+    
+    
+    public void addCourse(){
+        
+        //getting courseObject information
+        String courseName = courseNameTxt.getText();
+        String programVar = courseProgramTxt.getText();
+        Program courseProgram = null;
+        String instructorVar = courseInstructorTxt.getText();
+        Instructor courseInstructor = null;
+        
+        //retrieving the prereqs and putting them into the string array
+        String [] coursePrerequisiteList = coursePrerequisiteListTxt.getText().split(",");
+        
+        List<String> checkPrerequisiteList = new ArrayList<String>(); // used to check string array
+        
+        List<String> finalCoursePrequisiteList = new ArrayList<String>(); // actual ArrayList of 
+        
+        //loop to populate the checkPrerequisite 
+        
+        for (String prereq : coursePrerequisiteList) {
+            checkPrerequisiteList.add(prereq);
+        }
+        
+        //retrieving the student names from student list text field
+        
+        String [] studentName = courseStudentListTxt.getText().split(","); 
+        
+        //ArrayList used for checking studentnames with student 
+        List<String> checkStudentList = new ArrayList<String>();
+        
+        // the actual list of students in the courseObject
+        
+        List<Student> courseStudentList = new ArrayList<Student>();
+        
+        //adding the studentName contents to checkStudentList
+        
+        for (String student: studentName) {
+            checkStudentList.add(student);
+        }
+        
+        // checking the name of the students with the studentList then adding it to the courseStudentList.
+        
+        for (Student studentObject: studentList) {
+            for(String student : checkStudentList){
+                if (student.equals(studentObject.getName())) {
+                    courseStudentList.add(studentObject);
+                }
+            }
+            
+            
+        }
+        
+        //make object 
+        
+        Course course = new Course(courseName,courseProgram,courseInstructor ,finalCoursePrequisiteList,courseStudentList );
+        
+        
+        //for loop for checking the preqreqs in the checkPrerequisiteList with the courseOfList then adding it to the final list if match.
+        for(Course courseObject: courseOfList) {
+            for(String prerequisite: checkPrerequisiteList){
+                if(checkPrerequisiteList.contains(courseObject.getName())) {
+                    finalCoursePrequisiteList.add(prerequisite);
+                }
+            }
+        }
+        
+        
+        
+        
+        //setting the stuff 
+        
+        //checking logic for program and getting logic for program
+        Boolean programFound = true;
+        
+        for (Program programObject: programList) {
+            
+            if(programObject.getName().equals(programVar)) {
+                courseProgram = programObject;
+                programFound = true;
+                break;
+            }
+            else {
+                programFound = false;
+            }
+            
+        }
+        
+        
+        
+        
+        
+        //outputting a message to tell user that program is not in programList
+        if(programFound == false){
+                JOptionPane.showMessageDialog(null,"Program is not correctly entered or does not exist.");
+            }
+            else{}
+        
+        //checking logic for instructor and getting logic
+        
+        Boolean instructorFound = false;
+        for (Instructor instructorObject: instructorList) {
+            if(instructorObject.getName().equals(instructorVar)) {
+                courseInstructor = instructorObject;
+                instructorFound = true;
+                break;
+            }
+            else {
+                instructorFound = false;
+            }
+            
+        }
+        
+         if(instructorFound == false){
+                JOptionPane.showMessageDialog(null,"Instructor is not correctly entered or does not exist.");
+            }
+            else{}
+        
+        
+        
+        
+        
+        //setting 
+        
+        course.setName(courseName);
+        course.SetProgram(courseProgram);
+        course.setPrequisiteList(finalCoursePrequisiteList);
+        course.setInstructor(courseInstructor);
+        course.setStudentList(courseStudentList);
+        
+        
+        
+        if(courseName.isEmpty() || courseProgram == null || coursePrerequisiteList == null || courseInstructor == null || studentName == null  ) {
+            JOptionPane.showMessageDialog(null, "One or More fields empty and/or null");
+        }
+        else {
+            courseOfList.add(course);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    public void showPrograms() { // this method is just to test the stuff
+        //making a string builder just too test how the GUI,Buttons, and Lists interact.
+        StringBuilder programs = new StringBuilder();
+        
+        for(Program programObject : programList ){
+            programs.append("Program Name:").append(programObject.getName()).append("\n"); // add the program name string to the stringbuilder, then add name , then next line
+            programs.append("Program College Name: ").append(programObject.getCollege()).append("\n");// add College name to stringbuilder
+            programs.append("Program Type: ").append(programObject.getType()).append("\n");
+            programs.append("Programs Total Credits: ").append(programObject.getTotalCredits()).append("\n").append("\n");// append the string representation of the TotalCredits 
+        }
+        
+        JOptionPane.showMessageDialog(null, programs.toString());
+        
+        
+    }
+    
+    public void showStudents(){ // this is just for me to test if the student is added to student list , can be omitted
+        StringBuilder students = new StringBuilder();
+        
+        
+        for (Student studentObject: studentList ){
+            students.append("Student Name:").append(studentObject.getName()).append("\n");
+            students.append("Student DOB: ").append(studentObject.getDOB()).append("\n");
+            students.append("Student Program Name: ").append(studentObject.getProgram().getName()).append("\n");
+            students.append("Student Start Date: ").append(studentObject.getStartDate()).append("\n");
+            students.append("Student Advisor: ").append(studentObject.getAdvisor()).append("\n").append("\n");
+            
+        }
+        
+        JOptionPane.showMessageDialog(null,students.toString());
+    }
+    
+    public void showInstructors(){ // just to test the add function
+        
+        StringBuilder instructors = new StringBuilder();
+        
+        for (Instructor instructorObject: instructorList){
+            instructors.append("Instructor Name: ").append(instructorObject.getName()).append("\n");
+            instructors.append("Instructor DOB: ").append(instructorObject.getDOB()).append("\n");
+            instructors.append("Instructor Program: ").append(instructorObject.getProgram().getName()).append("\n");
+            instructors.append("Instructor Courses: ");
+            for (String course : instructorObject.getCourseList()) {
+                instructors.append(course).append(",");
+            }
+            
+            instructors.append("\n").append("Instructor Advisees:");
+            for (Student student : instructorObject.getAdvisees()) {
+                instructors.append(student.getName()).append(",");
+                
+            }
+            instructors.append("\n");
+            
+            
+            instructors.append("\n").append("\n");
+        }
+        
+        
+        
+        JOptionPane.showMessageDialog(null, instructors.toString());
+        
+    }
+    
+    public void showCourses(){
+        StringBuilder courses = new StringBuilder();
+        
+        for(Course courseObject : courseOfList) {
+            courses.append("Course Name: ").append(courseObject.getName()).append("\n");
+            courses.append("Course Program: ").append(courseObject.getProgram().getName()).append("\n");
+            courses.append("Course Instructor: ").append(courseObject.getInstructor().getName()).append(",");
+            courses.append("Course Prerequisites: ");
+            for (String prereq : courseObject.getPrerequisiteList())
+                courses.append(prereq).append(",");
+            
+            
+            courses.append("\n").append("Students in Course: ");
+            for (Student student: courseObject.getStudentList()) {
+                courses.append(student.getName()).append(",");
+            }
+            courses.append("\n").append("\n");
+        }
+        
+        
+        JOptionPane.showMessageDialog(null, courses.toString());
+        
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        
+         
+          
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegisterFrame().setVisible(true);
+            }
+          
+        });
+    }
+
+    
+    
+    // Variables declaration - do not modify                     
+    private javax.swing.JToggleButton addBtn;
+    private javax.swing.JButton addCourseBtn;
+    private javax.swing.JButton addCourseShowBtn;
+    private javax.swing.JButton addInstructorBtn;
+    private javax.swing.JButton addProgramBtn;
+    private javax.swing.JButton addStudentBtn;
+    private javax.swing.JTextField courseInstructorTxt;
+    private javax.swing.JLabel courseLbl;
+    private javax.swing.JTextField courseNameTxt;
+    private javax.swing.JTextField coursePrerequisiteListTxt;
+    private javax.swing.JTextField courseProgramTxt;
+    private javax.swing.JTextField courseStudentListTxt;
+    private javax.swing.JInternalFrame innerAddFrame;
+    private javax.swing.JTextField instructorAdviseesListTxt;
+    private javax.swing.JTextField instructorCourseListTxt;
+    private javax.swing.JTextField instructorDOBTxt;
+    private javax.swing.JLabel instructorLbl;
+    private javax.swing.JTextField instructorNameTxt;
+    private javax.swing.JTextField instructorProgramTxt;
+    private javax.swing.JTextField programCollegeTxt;
+    private javax.swing.JLabel programLbl;
+    private javax.swing.JTextField programNameTxt;
+    private javax.swing.JTextField programTotalCreditsTxt;
+    private javax.swing.JTextField programTypeTxt;
+    private javax.swing.JButton showInstructorsBtn;
+    private javax.swing.JButton showProgramsListBtn;
+    private javax.swing.JButton showStudentBtn;
+    private javax.swing.JTextField studentAdvisorTxt;
+    private javax.swing.JTextField studentDOBTxt;
+    private javax.swing.JLabel studentLbl;
+    private javax.swing.JTextField studentNameTxt;
+    private javax.swing.JTextField studentProgramTxt;
+    private javax.swing.JTextField studentStartDateTxt;
+    // End of variables declaration                   
+    //^ the above is generated code---- below is stuff I declared
+    public List<Program> programList; //lIST of programs
+    public List<Student> studentList; //List of students
+    public List<Course> courseOfList; //list of courses
+    public List<Instructor> instructorList;
+    public Student student; 
+    
+    //adding an example program
+    
+    
+
+}
+
+
+
+
