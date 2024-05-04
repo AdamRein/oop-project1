@@ -85,9 +85,9 @@ public class gui extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        instructorRegister = new javax.swing.JTextField();
+        courseRegister = new javax.swing.JTextField();
+        registerInstuctor = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -444,7 +444,12 @@ public class gui extends javax.swing.JFrame {
 
         jLabel17.setText("Course");
 
-        jButton9.setText("Register");
+        registerInstuctor.setText("Register");
+        registerInstuctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerInstuctorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -459,11 +464,11 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(jLabel17))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(courseRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(instructorRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
-                        .addComponent(jButton9)))
+                        .addComponent(registerInstuctor)))
                 .addContainerGap(282, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -472,13 +477,13 @@ public class gui extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(instructorRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(courseRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton9)
+                .addComponent(registerInstuctor)
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
@@ -829,6 +834,16 @@ public class gui extends javax.swing.JFrame {
         calling.registerStudent(StudentName, courseName);
     }//GEN-LAST:event_registerStudentMouseClicked
 
+    private void registerInstuctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerInstuctorMouseClicked
+        // TODO add your handling code here:
+        String instuctorName = instructorRegister.getText();
+        String courseName = courseRegister.getText();
+        
+        Calling calling = new Calling();
+        calling.registerInstructor(instuctorName, courseName);
+        
+    }//GEN-LAST:event_registerInstuctorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -929,13 +944,14 @@ public class gui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField assignAdvisor;
     private javax.swing.JTextField assignStudent;
+    private javax.swing.JTextField courseRegister;
+    private javax.swing.JTextField instructorRegister;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1003,8 +1019,6 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
@@ -1029,6 +1043,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     private javax.swing.JTextField registerCourse;
+    private javax.swing.JButton registerInstuctor;
     private javax.swing.JButton registerStudent;
     private javax.swing.JButton saveAssign;
     private javax.swing.JButton searchStudent;

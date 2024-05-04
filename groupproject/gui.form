@@ -636,13 +636,13 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField14" min="-2" max="-2" attributes="0"/>
+                                      <Component id="courseRegister" min="-2" max="-2" attributes="0"/>
+                                      <Component id="instructorRegister" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="registerInstuctor" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="282" max="32767" attributes="0"/>
@@ -655,15 +655,15 @@
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="instructorRegister" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
+                              <Component id="courseRegister" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                          <Component id="registerInstuctor" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="162" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -680,14 +680,17 @@
                     <Property name="text" type="java.lang.String" value="Course"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField14">
+                <Component class="javax.swing.JTextField" name="instructorRegister">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField15">
+                <Component class="javax.swing.JTextField" name="courseRegister">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton9">
+                <Component class="javax.swing.JButton" name="registerInstuctor">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Register"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerInstuctorMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
