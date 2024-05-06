@@ -109,7 +109,7 @@ public class Calling {
     }
     
     public Student createStudent(String name, String DOB, Program studentProgram, String startDate) {
-        Student newStudent = new Student(name, DOB, studentProgram, null, startDate, null);
+        Student newStudent = new Student(name, DOB, studentProgram, startDate);
         gui.studentList.add(newStudent);
         return newStudent;
     }
@@ -130,7 +130,7 @@ public class Calling {
     }
     
     public Instructor createInstructor(String name, String DOB, Program instructorProgram) {
-        Instructor newInstructor = new Instructor(name, DOB, instructorProgram, null, null);
+        Instructor newInstructor = new Instructor(name, DOB, instructorProgram);
         gui.instructorList.add(newInstructor);
         return newInstructor;
     }
@@ -152,7 +152,7 @@ public class Calling {
 
     public Course createCourse(String name, Program courseProgram, List<String> preReqNames) {
     // Assuming prerequisiteList is initialized in the Course constructor
-    Course newCourse = new Course(name, courseProgram, preReqNames, null, null);
+    Course newCourse = new Course(name, courseProgram, preReqNames);
     return newCourse;
 }
 }

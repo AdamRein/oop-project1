@@ -16,6 +16,13 @@ public class Instructor extends People {
     private List<Student> advisees;
     private Program program;
 
+    public Instructor( String name, String dob, Program Program){
+        super(name, dob);
+        this.program = Program;
+        this.courseList = new ArrayList<>();
+        this.advisees = new ArrayList<>();
+    }
+    
     public Instructor(String name, String dob, Program program, List<String> courseList, List<Student> advisees) {
         super(name, dob);
         this.program = program;

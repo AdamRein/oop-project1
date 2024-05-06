@@ -19,6 +19,15 @@ public class Student extends People {
     private String advisor;
     private List<String> course_list;
 
+    public Student(String name, String dob, Program program , String start_date) {
+        super(name, dob); 
+        this.program = program;
+        this.course_list = new ArrayList<>();
+        this.start_date = start_date;
+        this.advisor = "";
+        
+    }
+    
     public Student(String name, String dob, Program program , List<String> course_list , String start_date, String advisor) {
         super(name, dob); 
         this.program = program;

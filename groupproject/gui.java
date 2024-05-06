@@ -927,7 +927,7 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
         String courseName = addCourseName.getText();
         String programName = addCourseProgram.getText();
-        //String preReqNames = jTextField18.getText();
+        String preReqNames = addCoursePererqisite.getText();
 
         String[] coursePrerequisiteList = addCoursePererqisite.getText().split(",");
         for (String prereq : coursePrerequisiteList) {

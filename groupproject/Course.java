@@ -24,7 +24,15 @@ public class Course {
    private List<Student> studentList;
    
     // Constructor
-    public Course (String name,Program program,Instructor instructor){
+ 
+    public Course (String name, Program program, List<String> prerequisiteList){
+        this.name = name;
+        this.program = program;
+        this.prerequisiteList = new ArrayList<>(prerequisiteList);
+        this.studentList = new ArrayList<>();
+    }
+   
+   public Course (String name,Program program,Instructor instructor){
         this.name = name;
         this.program = program;
         this.prerequisiteList = new ArrayList<>();
